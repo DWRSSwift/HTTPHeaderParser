@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct LinkHeader {
+public struct LinkHeader: RandomAccessCollection {
     public typealias LinksList = [LinkValue]
     
     /// The links parsed from the header
@@ -31,28 +31,26 @@ public struct LinkHeader {
             return LinkHeader(links: self.links, _linksByRel: self._linksByRel)
         }
     }
-}
 
-extension LinkHeader: RandomAccessCollection {
     public typealias Element = LinksList.Element
     public typealias Index = LinksList.Index
-    
+
     // The upper and lower bounds of the collection, used in iterations
     public var startIndex: Index { return links.startIndex }
     public var endIndex: Index { return links.endIndex }
-    
+
     // Required subscript, based on a dictionary index
     public subscript(index: Index) -> Iterator.Element {
         get { return links[index] }
     }
-    
+
     // Method that returns the next index when iterating
     public func index(after i: Index) -> Index {
         return links.index(after: i)
     }
 }
 
-extension LinkHeader {
+public extension LinkHeader {
     subscript(rel rel: String) -> LinkValue? {
         get {
             guard let index = _linksByRel[rel] else {
