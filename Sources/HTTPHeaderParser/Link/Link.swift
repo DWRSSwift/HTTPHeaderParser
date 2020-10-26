@@ -48,17 +48,17 @@ extension HTTPHeaderParser {
          
          - Parameter value: The value of the `Link` header.
          */
-        public static func parse(value: String) -> [LinkValue] {
+        public static func parse(value: String) -> LinkHeader {
             let linkValues = value.split(separator: ",")
-            let linkParams = linkValues.compactMap { linkValue -> LinkValue? in
+            let constructedLinkHeader: LinkHeader.Constructor = linkValues.reduce(into: LinkHeader.Constructor()) { (result, linkValue) in
                 guard let uriRef = URIReference(from: linkValue) else {
-                    return nil
+                    return
                 }
                 let linkParams = splitLinkParams(in: uriRef.remaining)
                 let parms = LinkParams(from: linkParams)
-                return LinkValue(target: uriRef.value, params: parms)
+                result.add(link: LinkValue(target: uriRef.value, params: parms))
             }
-            return linkParams
+            return constructedLinkHeader.toLinkHeader()
         }
     }
 }
