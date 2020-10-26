@@ -23,6 +23,6 @@ _Initial version_
 - Support parsing `Link` headers
 
 [Unreleased]: https://github.com/DWRSSwift/HTTPHeaderParser/compare/0.2.1...HEAD
-[0.2.0]: https://github.com/DWRSSwift/HTTPHeaderParser/compare/0.2.0...0.2.1
+[0.2.1]: https://github.com/DWRSSwift/HTTPHeaderParser/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/DWRSSwift/HTTPHeaderParser/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/DWRSSwift/HTTPHeaderParser/releases/tag/0.1.0
