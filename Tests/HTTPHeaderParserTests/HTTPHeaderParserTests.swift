@@ -1,5 +1,5 @@
 import XCTest
-@testable import HTTPHeaderParser
+import HTTPHeaderParser
 
 final class HTTPHeaderParserTests: XCTestCase {
     static let singleLink = """
