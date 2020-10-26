@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2020-10-26
+### Fixed
+- `rel` subscript on `LinkHeader` is now exposed publicly
+
 ## [0.2.0] - 2020-10-26
 ### Added
 - This changelog
@@ -18,6 +22,7 @@ _Initial version_
 ### Added
 - Support parsing `Link` headers
 
-[Unreleased]: https://github.com/DWRSSwift/HTTPHeaderParser/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/DWRSSwift/HTTPHeaderParser/compare/0.2.1...HEAD
+[0.2.0]: https://github.com/DWRSSwift/HTTPHeaderParser/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/DWRSSwift/HTTPHeaderParser/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/DWRSSwift/HTTPHeaderParser/releases/tag/0.1.0
