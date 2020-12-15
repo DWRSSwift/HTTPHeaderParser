@@ -1,7 +1,7 @@
 import XCTest
 import HTTPHeaderParser
 
-final class HTTPHeaderParserTests: XCTestCase {
+final class LinkTests: XCTestCase {
     static let singleLink = """
                 <http://example.com/TheBook/chapter2>; rel=\"previous\";
                 title=\"previous chapter\"
@@ -11,8 +11,8 @@ final class HTTPHeaderParserTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        print(HTTPHeaderParserTests.singleLink)
-        let linkParams = HTTPHeaderParser.Link.parse(value: HTTPHeaderParserTests.singleLink)
+        print(LinkTests.singleLink)
+        let linkParams = HTTPHeaderParser.Link.parse(value: LinkTests.singleLink)
         XCTAssertEqual(linkParams.count, 1, "")
         let firstLink = linkParams[0]
         XCTAssertEqual(firstLink.target, "http://example.com/TheBook/chapter2", "First link's target should parsed correctly")
@@ -31,7 +31,7 @@ final class HTTPHeaderParserTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        let linkParams = HTTPHeaderParser.Link.parse(value: HTTPHeaderParserTests.rootResourceRelation)
+        let linkParams = HTTPHeaderParser.Link.parse(value: LinkTests.rootResourceRelation)
         XCTAssertEqual(linkParams.count, 1, "")
         XCTAssertEqual(linkParams[0].target, "/", "First link's target should parsed correctly")
         XCTAssertEqual(linkParams[0].params.rel, "http://example.net/foo")
@@ -47,7 +47,7 @@ final class HTTPHeaderParserTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        let linkParams = HTTPHeaderParser.Link.parse(value: HTTPHeaderParserTests.multipleLinks)
+        let linkParams = HTTPHeaderParser.Link.parse(value: LinkTests.multipleLinks)
         XCTAssertEqual(linkParams.count, 2, "")
         let firstLink = linkParams[0]
         XCTAssertEqual(firstLink.target, "/TheBook/chapter2", "First link's target should parsed correctly")
@@ -72,7 +72,7 @@ final class HTTPHeaderParserTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        let linkParams = HTTPHeaderParser.Link.parse(value: HTTPHeaderParserTests.sameTargetContext)
+        let linkParams = HTTPHeaderParser.Link.parse(value: LinkTests.sameTargetContext)
         XCTAssertEqual(linkParams.count, 1, "")
         let firstLink = linkParams[0]
         XCTAssertEqual(firstLink.target, "http://example.org/", "First link's target should parsed correctly")
@@ -82,7 +82,7 @@ final class HTTPHeaderParserTests: XCTestCase {
     static let gitLabHeader = "<https://gitlab.example.com/api/v4/projects/8/issues/8/notes?page=1&per_page=3>; rel=\"prev\", <https://gitlab.example.com/api/v4/projects/8/issues/8/notes?page=3&per_page=3>; rel=\"next\", <https://gitlab.example.com/api/v4/projects/8/issues/8/notes?page=1&per_page=3>; rel=\"first\", <https://gitlab.example.com/api/v4/projects/8/issues/8/notes?page=3&per_page=3>; rel=\"last\""
     
     func testParseGitlabHeader() {
-        let linkParams = HTTPHeaderParser.Link.parse(value: HTTPHeaderParserTests.gitLabHeader)
+        let linkParams = HTTPHeaderParser.Link.parse(value: LinkTests.gitLabHeader)
         let prevLink = linkParams[0]
         let nextLink = linkParams[1]
         let firstLink = linkParams[2]
@@ -110,7 +110,7 @@ final class HTTPHeaderParserTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        let linkParams = HTTPHeaderParser.Link.parse(value: HTTPHeaderParserTests.relWithSemiColon)
+        let linkParams = HTTPHeaderParser.Link.parse(value: LinkTests.relWithSemiColon)
         XCTAssertEqual(linkParams.count, 1, "")
         let firstLink = linkParams[0]
         XCTAssertEqual(firstLink.target, "http://example.org/", "First link's target should parsed correctly")

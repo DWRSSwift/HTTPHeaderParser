@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Support for `Retry-After` header
+
+
 ## [0.2.1] - 2020-10-26
 ### Fixed
 - `rel` subscript on `LinkHeader` is now exposed publicly
